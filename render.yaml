@@ -1,0 +1,15 @@
+# 📁 render.yaml (لنشر تلقائي)
+services:
+  - type: web
+    name: telegram-bot-production
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: WEATHER_API_KEY
+        sync: false
+      - key: WEBHOOK_URL
+        fromGroup: webhook-url
