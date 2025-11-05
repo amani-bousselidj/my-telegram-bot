@@ -271,17 +271,4 @@ class البوت_الإنتاجي:
                     pass
     
     def تشغيل_وضع_الإنتاج(self):
-        """تشغيل البوت في وضع الإنتاج مع webhook"""
-        if not self.webhook_url:
-            logging.warning("WEBHOOK_URL غير محدد. سيتم تشغيل البوت بنظام polling.")
-            self.application.run_polling()
-            return
-
-        # تشغيل webhook
-        logging.info(f"✅ تشغيل البوت عبر Webhook على {self.webhook_url}/{self.token}")
-        self.application.run_webhook(
-            listen="0.0.0.0",
-            port=self.port,
-            url_path=self.token,  # تيليجرام سيرسل POST إلى /<TOKEN>
-            webhook_url=f"{self.webhook_url}/{self.token}"  # رابط خارجي HTTPS
-        )
+        logging.info("البوت جاهز للعمل عبر Webhook مع Flask")

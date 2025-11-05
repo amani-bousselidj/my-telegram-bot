@@ -1,6 +1,8 @@
 # 📁 app.py (لخوادم الويب)
 from flask import Flask, request, jsonify
 import os
+from telegram import Update
+
 from production_bot import البوت_الإنتاجي
 
 app = Flask(__name__)
@@ -10,7 +12,7 @@ app = Flask(__name__)
 def الصفحة_الرئيسية():
     return "🤖 البوت يعمل بشكل صحيح! API جاهز."
 
-@app.route('/webhook/<token>', methods=['POST'])
+@app.route('/webhook/8210077803:AAEDBEPJQd94z3DaRgs_LqxdajandeqVtiU', methods=['POST'])
 def webhook(token):
     if بوت:
         update = Update.de_json(request.get_json(), بوت.application.bot)
